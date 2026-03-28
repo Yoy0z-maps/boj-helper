@@ -144,3 +144,12 @@ public class Main {
 | `boj-helper.pythonPath` | `python3` | Python 실행 경로 |
 | `boj-helper.workspaceDir` | (워크스페이스 루트) | 문제 파일 저장 경로 |
 | `boj-helper.timeoutMs` | `5000` | 테스트 케이스 실행 타임아웃 (ms) |
+| `boj-helper.defaultLanguage` | `python` | 문제 열기 시 기본으로 선택될 언어 (`python` / `cpp` / `java`) |
+| `boj-helper.disableIntelliSense` | `false` | 문제 풀이 파일에서 IntelliSense(메서드 이름 추천, 자동 완성) 비활성화 |
+
+---
+
+## 문의 및 버그 리포트
+
+- **GitHub Issues**: [github.com/Yoy0z-maps/boj-helper/issues](https://github.com/Yoy0z-maps/boj-helper/issues)
+- **이메일**: [work.johnhan@gmail.com](mailto:work.johnhan@gmail.com)

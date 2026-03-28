@@ -1,0 +1,156 @@
+{
+  "name": "baekjoon-helper",
+  "displayName": "BOJ Helper by Yoy0z-maps",
+  "description": "백준(BOJ) 문제 풀이 보조 익스텐션 — 문제 파싱, 템플릿 생성, 테스트 케이스 자동 추가 및 실행",
+  "version": "1.0.0",
+  "publisher": "Yoy0z-maps",
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yoy0z-maps/boj-helper"
+  },
+  "homepage": "https://www.yoy0z-maps.com/",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yoy0z-maps/boj-helper/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Education",
+    "Snippets"
+  ],
+  "keywords": [
+    "boj",
+    "baekjoon",
+    "백준",
+    "algorithm",
+    "competitive programming",
+    "코딩테스트"
+  ],
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:boj-helper.openProblem",
+    "onCommand:boj-helper.runTests",
+    "onCommand:boj-helper.setWorkspaceDir"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "boj-helper.openProblem",
+        "title": "BOJ: 문제 열기",
+        "icon": "$(play)"
+      },
+      {
+        "command": "boj-helper.runTests",
+        "title": "BOJ: 테스트 실행",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "boj-helper.setWorkspaceDir",
+        "title": "BOJ: 파일 저장 경로 설정",
+        "icon": "$(folder-opened)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "boj-helper.openProblem",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+shift+b"
+      },
+      {
+        "command": "boj-helper.runTests",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "boj-helper.runTests",
+          "when": "resourceExtname == .py",
+          "group": "navigation"
+        },
+        {
+          "command": "boj-helper.runTests",
+          "when": "resourceExtname == .cpp",
+          "group": "navigation"
+        },
+        {
+          "command": "boj-helper.runTests",
+          "when": "resourceExtname == .java",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "BOJ Helper",
+      "properties": {
+        "boj-helper.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "파이썬 실행 경로"
+        },
+        "boj-helper.workspaceDir": {
+          "type": "string",
+          "default": "",
+          "description": "문제 파일을 저장할 디렉토리 (빈 값이면 현재 워크스페이스 루트)"
+        },
+        "boj-helper.timeoutMs": {
+          "type": "number",
+          "default": 5000,
+          "description": "테스트 케이스 실행 타임아웃 (ms)"
+        },
+        "boj-helper.defaultLanguage": {
+          "type": "string",
+          "enum": [
+            "python",
+            "cpp",
+            "java"
+          ],
+          "enumDescriptions": [
+            "Python",
+            "C++",
+            "Java"
+          ],
+          "default": "python",
+          "description": "문제 열기 시 기본으로 선택될 언어"
+        },
+        "boj-helper.disableIntelliSense": {
+          "type": "boolean",
+          "default": false,
+          "description": "문제 풀이 파일에서 IntelliSense(메서드 이름 추천, 코드 자동 완성) 비활성화"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run bundle -- --minify",
+    "bundle": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "compile": "npm run bundle -- --sourcemap",
+    "watch": "npm run bundle -- --sourcemap --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "esbuild": "^0.27.4",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
